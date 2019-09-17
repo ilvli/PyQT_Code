@@ -1,29 +1,17 @@
 import sys
-import PyQt5.QtWidgets import QWidget,QLabel,QApplication
+from PyQt5.QtWidgets import QWidget, QLabel, QApplication
 
-
-class Example(QWidget):
-    def __init__(self):
-        super().__init()
-
-        self.initUI()
-
-    def initUI(self):
-        lbl1 = QLabel('Zetcde',self)
-        lbl1.move(15,10)
-
-        lbl2 = QLabel('tutorials', self)
-        lbl2.move(35, 40)
-
-        lbl3 = QLabel('for programmers', self)
-        lbl3.move(55, 70)
-
-        self.setGeometry(300, 300, 250, 150)
-        self.setWindowTitle('Absolute')
-        self.show()
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    ex = Example()
+
+    # 创建窗口对象
+    w = QWidget()
+    w.resize(250, 150)
+    w.move(300, 300)
+    # 窗口标题
+    w.setWindowTitle('Simple')
+    w.show()
+
     sys.exit(app.exec_())
