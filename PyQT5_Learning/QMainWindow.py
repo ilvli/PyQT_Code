@@ -1,3 +1,7 @@
+"""
+参考自https://maicss.gitbooks.io/pyqt5/content/hello_world.html
+PyQT5菜单相关功能的实现
+"""
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, qApp, QMenu, QTextEdit
 from PyQt5.QtGui import QIcon
@@ -30,24 +34,28 @@ class Example(QMainWindow):
         fileMenu = menubar.addMenu('&File')
         fileMenu.addAction(exitAct)
 
-        # 使用`QMenu`创建一个新菜单。
+        # 使用`QMenu`创建一个新子菜单。
         impMenu = QMenu('Import', self)
         # 使用`addAction`添加一个动作。
         impAct = QAction('Import mail', self)
+        # 将新impAct添加到子菜单Import中
         impMenu.addAction(impAct)
+        # 将子菜单添加到菜单栏
         fileMenu.addMenu(impMenu)
 
+        # 新建一个动作
         newAct = QAction('New', self)
+        # 将动作添加到菜单栏
         fileMenu.addAction(newAct)
 
         # 设置工具栏
         # 这里使用了一个行为对象，这个对象绑定了一个标签，一个图标和一个快捷键。
         # 这些行为被触发的时候，会调用`QtGui.QMainWindow`的quit方法退出应用。
-        exitAct = QAction(QIcon('quit.png'), 'Exit', self)
-        exitAct.setShortcut('Ctrl+Q')
-        exitAct.triggered.connect(qApp.quit)
+        exitAct2 = QAction(QIcon('quit.png'), 'Exit', self)
+        exitAct2.setShortcut('Ctrl+T')
+        exitAct2.triggered.connect(qApp.quit)
         self.toolbar = self.addToolBar('Exit')
-        self.toolbar.addAction(exitAct)
+        self.toolbar.addAction(exitAct2)
 
         # 这里创建了一个文本编辑区域，并把它放在`QMainWindow`的中间区域。
         # 这个组件或占满所有剩余的区域。
@@ -65,7 +73,7 @@ class Example(QMainWindow):
         viewMenu.addAction(viewStatAct)
 
         self.setGeometry(300, 300, 300, 200)
-        self.setWindowTitle('Submenu')
+        self.setWindowTitle('Menu')
         self.show()
 
     # 默认设置为选中状态。
